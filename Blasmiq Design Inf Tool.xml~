@@ -1,0 +1,99 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="731" measuredH="658" mockupW="453" mockupH="580">
+  <controls>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::TitleWindow" x="278" y="78" w="453" h="580" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>36</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>Infrastructure%20Test%20Tool</text>
+        <topheight>28</topheight>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="__group__" x="289" y="118" w="431" h="27" measuredW="431" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Button" x="0" y="0" w="-1" h="-1" measuredW="53" measuredH="27" zOrder="0" locked="false" isInGroup="44">
+          <controlProperties>
+            <color>40463</color>
+            <text>Start</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="61" y="0" w="-1" h="-1" measuredW="55" measuredH="27" zOrder="1" locked="false" isInGroup="44">
+          <controlProperties>
+            <color>13576743</color>
+            <text>Abort</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="123" y="0" w="-1" h="-1" measuredW="57" measuredH="27" zOrder="2" locked="false" isInGroup="44">
+          <controlProperties>
+            <color>2848996</color>
+            <text>Hosts</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::Button" x="191" y="0" w="-1" h="-1" measuredW="56" measuredH="27" zOrder="3" locked="false" isInGroup="44">
+          <controlProperties>
+            <color>472931</color>
+            <text>Tests</text>
+          </controlProperties>
+        </control>
+        <control controlID="4" controlTypeID="com.balsamiq.mockups::Button" x="255" y="0" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="4" locked="false" isInGroup="44">
+          <controlProperties>
+            <text>Save%20Conf</text>
+          </controlProperties>
+        </control>
+        <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="347" y="0" w="-1" h="-1" measuredW="84" measuredH="27" zOrder="5" locked="false" isInGroup="44">
+          <controlProperties>
+            <text>Load%20Conf</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Tree" x="300" y="160" w="162" h="293" measuredW="300" measuredH="225" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>HOSTS%0A%3E%20Host%201%0A%3E%20Host%202%0Av%20Host%203%0A_Test%201%0A_Test%203%0A%3E%20Host%204%0Av%20Host%205%0A_Test%203%0A_Test%2010</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Tree" x="496" y="160" w="208" h="293" measuredW="300" measuredH="243" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>TESTS%0A%3E%20Test%201%0A%3E%20Test%202%0Av%20Test%203%0A%20%3E%20Test%203_1%0A%20Test%203_1_1%0A_Test%203%0Av%20Test%204%0A_Test%204_1%0A_Test%204_2%0A_Test%204_3</text>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Button" x="300" y="461" w="107" h="29" measuredW="102" measuredH="27" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>8347648</color>
+        <text>Show%20Results</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Button" x="648" y="461" w="56" h="29" measuredW="56" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>15374745</color>
+        <text>Close</text>
+      </controlProperties>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::ProgressBar" x="450" y="631" w="260" h="20" measuredW="100" measuredH="20" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <indeterminate>false</indeterminate>
+        <scrollBarValue>42</scrollBarValue>
+      </controlProperties>
+    </control>
+    <control controlID="51" controlTypeID="com.balsamiq.mockups::TabBar" x="289" y="506" w="421" h="110" measuredW="244" measuredH="100" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14540253</color>
+        <tabHPosition>left</tabHPosition>
+        <tabVPosition>top</tabVPosition>
+        <text>Progressing%2C%20Passed%2C%20Failed</text>
+        <value>2</value>
+        <verticalScrollbar>true</verticalScrollbar>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Label" x="289" y="631" w="-1" h="-1" measuredW="151" measuredH="21" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>0</color>
+        <text>5%20of%2010%20Tests%20completed...</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
