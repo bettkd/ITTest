@@ -72,8 +72,8 @@ class InfrastructureTool(Frame):
 		print 'Selected item was %s' % item_id
 		
 		item = tree.item(item_id)
-		#flag = "#another_tag" in item['tags']
-		#print ' flag = %s' % flag
+		flag = "entry" in item['tags']
+		print ' flag = %s' % flag
 		#pass
 		print item["text"]
 
@@ -152,7 +152,7 @@ class InfrastructureTool(Frame):
 		tests_tree.heading('#0', text='Directory Browser', anchor='w')
 
 		self.populate_roots(tests_tree)
-		tests_tree.bind('<<TreeviewSelect>>', self.update_tree)
+		tests_tree.bind('<<TreeviewOpen>>', self.update_tree)
 		#tests_tree.bind('<Double-Button-1>', self.change_dir)
 
 		tests_tree.place (x=240, y=72)
@@ -192,7 +192,7 @@ class InfrastructureTool(Frame):
 		txtProgress.grid(padx=10, pady=10, row=3, column=0, columnspan=6)
 
 		'''=====Selection Test============='''
-		tests_tree.tag_bind('#entry', '<1>', self.onTreeClick)
+		tests_tree.tag_bind('#entry', '<<TreeviewSelect>>', self.onTreeClick)
 		#tests_tree.tag_bind(item, tests_tree.item, '<1>', [list(item_clicked), %W, %x, %y])
 		#test_items = items = map(int, tests_tree.curselection())
 		#for item in test_items:
