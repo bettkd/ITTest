@@ -34,7 +34,7 @@ class InfrastructureTool(Frame):
 			elif os.path.isfile(p): ptype = 'file'
 			#print "ptype=", ptype
 			fname = os.path.split(p)[1]
-			id = tree.insert(node, 'end', text=fname, values=[p, ptype])
+			id = tree.insert(node, 'end', text=fname, values=[p, ptype], tags=['#entry'])
 
 			if ptype == 'directory':
 				if fname not in ('.', '..'):
@@ -75,7 +75,9 @@ class InfrastructureTool(Frame):
 		flag = "entry" in item['tags']
 		print ' flag = %s' % flag
 		#pass
-		print item["text"]
+		print item
+
+		return [item["text"], item["values"]]
 
 	def _addTest(event, host_tree, tests_tree, self):
 		host_tree.insert(host_tree.node, end, text="testid")
