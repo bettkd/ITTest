@@ -65,22 +65,45 @@ class InfrastructureTool(Frame):
 				tree.delete(tree.get_children(''))
 				self.populate_roots(tree)
 	
-	def onTreeClick(self, event):
+	testTreeAttr = []
+	def onTestTreeSelect(self, event):
 		tree = event.widget
 		item_id = str(tree.focus())
 		#item_id = str(tree.has("#entry"))
-		print 'Selected item was %s' % item_id
-		
+		#print 'Selected item was %s' % item_id
 		item = tree.item(item_id)
-		flag = "entry" in item['tags']
-		print ' flag = %s' % flag
+		#flag = "entry" in item['tags']
+		#print ' flag = %s' % flag
 		#pass
 		print item
+		self.testTreeAttr = [item["text"], item["values"]]
 
-		return [item["text"], item["values"]]
+	hostTreeAttr = ""
+	ht_index = 0
+	def onHostTreeSelect(self, event):
+		tree = event.widget
+		item_id = str(tree.focus())
+		#print item_id
+		item = tree.item(item_id)
+		print item["text"]
+		self.hostTreeAttr = item["text"]
 
-	def _addTest(event, host_tree, tests_tree, self):
-		host_tree.insert(host_tree.node, end, text="testid")
+		#index position of a node in relation to the parent
+		self.ht_index = tree.index(item_id)
+
+
+	def addTest(self, h_tree):
+		(testtxt, testvals) = self.testTreeAttr
+		hosttxt = self.hostTreeAttr
+		h_tree.insert(hosttxt, END, text=testtxt, values=testvals)
+		#print mytype
+		#host_tree.insert(host_tree.node, end, text="testid")
+
+	def moveUp(self, h_tree):
+		item_id = str(h_tree.focus())
+		h_tree.move(item_id, self.ht_index-1)
+
+
 	'''
 	def select_cmd(self, selected):
 		print 'Selected items:', selected
@@ -138,12 +161,12 @@ class InfrastructureTool(Frame):
 		host_tree.column('#0', stretch=False, width=180)
 		host_tree.heading('#0',text='Hosts', anchor=W)
 		for n in xrange(0, len(itfx.hostItem('hostnames'))):
-			host_tree.insert('', 'end', 'host'+str(n),
+			host_tree.insert('', 'end', 'Host '+str(n+1),
 				text=itfx.hostItem('hostnames')[n],
-				tag=itfx.hostItem('ips')[n])
+				values=itfx.hostItem('ips')[n])
 		#Place holder children(tests)
-		host_tree.insert('host1', 2, text='Test 1')
-		host_tree.insert('host2', 4, text='Test 2')
+		#host_tree.insert('host1', END, text='Test 1')
+		#host_tree.insert('host2', END, text='Test 2')
 		host_tree.grid(padx=10, pady=10, row =1, column=0, columnspan=3)
 
 		#host_tree.configure(command=self.select_cmd, selectmode='extended')
@@ -170,6 +193,7 @@ class InfrastructureTool(Frame):
 		btnMoveUp = Button(self, text='MU', relief=FLAT, image=imgMoveUp, fg='brown', width=33, height=33)
 		btnMoveUp.place(x=128, y=312)
 		btnMoveUp.image = imgMoveUp
+		btnMoveUp.bind('<Button-1>', lambda event, h_tree=host_tree: self.moveUp(h_tree))
 
 		#btnMoveDown Button
 		imgMoveDown = PhotoImage(file="imgs/move_down.gif")
@@ -180,7 +204,7 @@ class InfrastructureTool(Frame):
 		#Add Test Button
 		btnAddTest = Button(self, text='<<Add Test', relief=FLAT, fg='blue', width=10, height=2)
 		btnAddTest.grid(padx=10, pady=10, row=2, column=3, columnspan=2)
-		#btnAddTest.bind('<Button-1>', host_tree, tests_tree, self._addTest)
+		btnAddTest.bind('<Button-1>', lambda event, h_tree=host_tree: self.addTest(h_tree))
 
 		#Close Button
 		imgClose = PhotoImage(file="imgs/quit.gif")
@@ -194,7 +218,8 @@ class InfrastructureTool(Frame):
 		txtProgress.grid(padx=10, pady=10, row=3, column=0, columnspan=6)
 
 		'''=====Selection Test============='''
-		tests_tree.tag_bind('#entry', '<<TreeviewSelect>>', self.onTreeClick)
+		tests_tree.tag_bind('#entry', '<<TreeviewSelect>>', self.onTestTreeSelect)
+		host_tree.bind('<<TreeviewSelect>>', self.onHostTreeSelect)
 		#tests_tree.tag_bind(item, tests_tree.item, '<1>', [list(item_clicked), %W, %x, %y])
 		#test_items = items = map(int, tests_tree.curselection())
 		#for item in test_items:
