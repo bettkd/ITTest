@@ -79,7 +79,6 @@ class InfrastructureTool(Frame):
 		self.testTreeAttr = [item["text"], item["values"]]
 
 	hostTreeAttr = ""
-	ht_index = 0
 	def onHostTreeSelect(self, event):
 		tree = event.widget
 		item_id = str(tree.focus())
@@ -88,10 +87,6 @@ class InfrastructureTool(Frame):
 		print item["text"]
 		self.hostTreeAttr = item["text"]
 
-		#index position of a node in relation to the parent
-		self.ht_index = tree.index(item_id)
-
-
 	def addTest(self, h_tree):
 		(testtxt, testvals) = self.testTreeAttr
 		hosttxt = self.hostTreeAttr
@@ -99,9 +94,11 @@ class InfrastructureTool(Frame):
 		#print mytype
 		#host_tree.insert(host_tree.node, end, text="testid")
 
-	def moveUp(self, h_tree):
-		item_id = str(h_tree.focus())
-		h_tree.move(item_id, self.ht_index-1)
+	def moveItem(self, tree, direction):
+		item_id = str(tree.focus())
+		ht_index = tree.index(item_id)
+		ht_parent = tree.parent(item_id)
+		tree.move(item_id, ht_parent, ht_index+direction)
 
 
 	'''
@@ -193,13 +190,14 @@ class InfrastructureTool(Frame):
 		btnMoveUp = Button(self, text='MU', relief=FLAT, image=imgMoveUp, fg='brown', width=33, height=33)
 		btnMoveUp.place(x=128, y=312)
 		btnMoveUp.image = imgMoveUp
-		btnMoveUp.bind('<Button-1>', lambda event, h_tree=host_tree: self.moveUp(h_tree))
+		btnMoveUp.bind('<Button-1>', lambda event, h_tree=host_tree, direction=-1: self.moveItem(h_tree, direction))
 
 		#btnMoveDown Button
 		imgMoveDown = PhotoImage(file="imgs/move_down.gif")
 		btnMoveDown = Button(self, text='MD', relief=FLAT, image=imgMoveDown, fg='brown', width=33, height=33)
 		btnMoveDown.place(x=164, y=312)
 		btnMoveDown.image = imgMoveDown
+		btnMoveDown.bind('<Button-1>', lambda event, h_tree=host_tree, direction=1: self.moveItem(h_tree, direction))
 
 		#Add Test Button
 		btnAddTest = Button(self, text='<<Add Test', relief=FLAT, fg='blue', width=10, height=2)
